@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500');
+@media screen and (max-width: 499px){
+	.month-container {
+		width: 100% !important;
+	}
+	.title {
+		font-size: 26px !important;
+	}
+	.loading {
+		right: 30px !important;
+		top: 20px !important;
+		font-size: 30px !important;
+		bottom: auto !important;
+	}
+
+	.data {
+		flex-direction: column !important;
+	}
+
+	.data label {
+		margin: auto !important;
+		width: 100% !important;
+	}
+
+	.send {
+		width: 100% !important;
+		margin: 5px 0 !important;
+	}
+}
+@media screen and (min-width: 500px) and (max-width: 699px){
+	.month-container {
+		width: calc(100% / 2) !important;
+	}
+	.title {
+		font-size: 40px !important;
+	}
+	.data label {
+		width: 50% !important;
+	}
+	.send {
+		width: 50% !important;
+	}
+}
+@media screen and (min-width: 700px) and (max-width: 799px){
+	.month-container {
+		width: calc(100% / 3) !important;
+	}
+}
+@media screen and (min-width: 800px) and (max-width: 1099px){
+	.month-container {
+		width: calc(100% / 4) !important;
+	}
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Ubuntu', sans-serif;
+	color: #0d592d;
+}
+body {
+	position: relative;
+}
+.loading {
+	position: fixed;
+	right: 50px;
+	bottom: 50px;
+	z-index: -1000;
+	font-size: 40px;
+	opacity: 0;
+	transition: .1s;
+	top: '';
+}
+
+.loading.show{
+	opacity: .7;
+	z-index: 1000;
+}
+.calendar, .send, .close {
+	-ms-user-select: none; 
+	-moz-user-select: none; 
+	-webkit-user-select: none; 
+	user-select: none; 
+}
+.content {
+	padding: 25px;
+}
+.title {
+	color: #227947;
+	font-size: 48px;
+	font-weight: 500;
+}
+.subtitle {
+	color: #383838;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 25px;
+}
+
+.calendar {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	margin: 35px 0 0;
+}
+.month-container {
+	width: calc(100% / 6);
+	display: flex;
+}
+.month {
+	width: 100%;
+	margin: 5px;
+	box-sizing: content-box;
+	padding: 10px 15px 20px;
+	border-radius: 5px;
+	border: 1px solid #25863c80;
+	background-color: #77b97e39;
+}
+.calendar_header_month {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 25px;
+}
+.calendar_header_month::after {
+	content: '';
+	border-bottom: 2px solid #dadada;
+	position: absolute;
+	left: 10%;
+	right: 10%;
+	bottom: -4px;
+}
+.calendar_header {
+	display: flex;
+	margin: 15px 0 7px;
+}
+.calendar_header div, .calendar_day {
+	width: calc(100% / 7);
+	justify-content: space-evenly;
+	display: flex;
+	margin: 0 2px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 25px;
+	background: #fff;
+}
+.calendar_day {
+	margin: 0 2px 2px;
+	cursor: pointer;
+	transition: .1s;
+}
+.calendar_day:hover, .calendar_day.selected {
+	background-color: #77b97e;
+	color: #fff;
+}
+.calendar_header div:nth-last-child(-n+2) {
+	background: #e2907a;
+	color: #fff;
+}
+.calendar_week {
+	display: flex;
+}
+.data {
+	display: flex;
+	margin: 25px 5px 0 5px;
+	align-items: flex-end;
+}
+
+label {
+	display: flex;
+	flex-direction: column;
+	margin: 0 20px 0 0;
+}
+
+.data label span {
+	color: #000;
+	margin: 0 0 5px;
+	font-size: 18px;
+	line-height: 25px;
+}
+
+.data label .phone {
+	border: 1px solid #22222280;
+	padding: calc(22px / 2);
+	color: #afafaf;
+	font-size: 16px;
+	width: 180px;
+}
+
+.data label .phone:focus {
+	color: #747474 !important;
+}
+
+.send {
+	background: #68a977;
+	color: #fff;
+	height: 45px;
+	width: 180px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: .1s;
+}
+
+.send:hover {
+	background: #4b985d;
+}
+
+.send.disabled {
+	opacity: .5;
+	background: #a96868 !important;
+}
+
+.popup {
+
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+	align-items: center;
+	justify-content: center;
+	z-index: -100;
+	transition: .2s;
+	display: flex;
+
+}
+
+.popup.show {
+	opacity: 1;
+	z-index: 100;
+
+}
+
+.overflow {
+
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	background: #dadada80;
+
+}
+
+.popup-content {
+
+	background: white;
+	width: 400px;
+	height: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	padding: 10px;
+
+}
+
+.close {
+
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	font-size: 20px;
+	color: #d2d2d2;
+	cursor: pointer;
+
+}
+
+.popup-icon {
+
+	font-size: 25px;
+	display: flex;
+	justify-content: center;
+	width: 30%;
+
+}
+
+.popup-icon i {
+
+	display: none;
+
+}
+.popup-icon i.show {
+
+	display: flex;
+
+}
+.error {
+
+	color: brown;
+
+}
+.popup-message {
+	width: 100%;
+}
+.popup-title {
+
+	line-height: 25px;
+	letter-spacing: 1px;
+	font-weight: 500;
+
+}
+.popup-text {
+
+	width: 100%;
+	color: #000;
+
+}

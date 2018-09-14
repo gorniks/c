@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Тестовое задание</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	
+
+	<link href='css/style.css' rel='stylesheet' type='text/css'>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script src="js/jquery.maskedinput.min.js"></script> 
+	<script src="js/main.js"></script> 
+
+</head>
+<body>
+	<i id="loading"class="fa fa-cog fa-spin fa-fw loading"></i>
+	<div id="popup" class="popup">
+		<div id="overflow" class="overflow"></div>
+		<div class="popup-content">
+			<i id="close" class="fas fa-times close"></i>
+			<div id="popup-icon" class="popup-icon">
+				<i id="error" class="far fa-times-circle error"></i>
+				<i id="success" class="far fa-check-circle success"></i>
+			</div>
+			<div class="popup-message">
+				<h3 id="popup-title" class="popup-title"></h3>
+				<p id="popup-text" class="popup-text"></p>
+			</div>
+		</div>
+	</div>
+	<div class="content">
+		<h1 class="title">Бронирование даты</h1>
+		<h2 class="subtitle">Тестовое задание на должность fullstack-разработчика</h2>
+		<div id="calendar" class="calendar"></div>
+		<div id="data" class="data">
+			<label>
+				<span>Укажите телефон:</span>
+				<input type="tel" required placeholder="+7 (___) ___-__-__" id="phone" class="phone" title="Формат: +7 (123) 456 78 99"/>
+			</label>
+			<span id="send" class="send disabled" disabled="true">Забронировать</span>
+		</div>
+	</div>
+</body>
+</html>
