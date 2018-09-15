@@ -18,11 +18,11 @@
 
 	var calendar_month = ( title, month_id ) =>{
 		return `<div class="month-container">
-					<div class="month" data-month-id=${month_id}>
-						<div class="calendar_header_month">${title}</div>
-						<div class="calendar_header"></div>
-					</div>
-				</div>`;
+		<div class="month" data-month-id=${month_id}>
+		<div class="calendar_header_month">${title}</div>
+		<div class="calendar_header"></div>
+		</div>
+		</div>`;
 	};
 
 	var week_title = ( title ) => {
@@ -111,18 +111,23 @@
 			if ( d.hasOwnProperty('data') ) {
 				d = d.data;
 
-				for (var i = +d.startMonth; i <= +d.endMonth; i++) {
-					$(`[data-month-id="${i}"]`).find('.calendar_day').each(function(index, el) {
-						if ( $(el).text() != '' ) {
-							if ( i == d.startMonth && +$(el).text() >= d.startDay) {
-								$(el).addClass('selected');
-							} else if ( i > d.startMonth && i < d.endMonth ) {
-								$(el).addClass('selected');
-							} else if ( i == d.endMonth && +$(el).text() <= d.endDay) {
-								$(el).addClass('selected');
+				if ( d.startMonth == d.endMonth && d.startDay == d.endDay ) {
+					console.log('qwe');
+					$(`[data-month-id="${d.startMonth}"]`).find(`.calendar_day:contains("${d.startDay}")`).addClass('selected');
+				} else {
+					for (var i = +d.startMonth; i <= +d.endMonth; i++) {
+						$(`[data-month-id="${i}"]`).find('.calendar_day').each(function(index, el) {
+							if ( $(el).text() != '' ) {
+								if ( i == d.startMonth && +$(el).text() >= d.startDay) {
+									$(el).addClass('selected');
+								} else if ( i > d.startMonth && i < d.endMonth ) {
+									$(el).addClass('selected');
+								} else if ( i == d.endMonth && +$(el).text() <= d.endDay) {
+									$(el).addClass('selected');
+								}
 							}
-						}
-					});
+						});
+					}
 				}
 			}
 		});
